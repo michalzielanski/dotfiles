@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+function compstyle_endorphins_help {
+  echo "A set of custom completion styles."
+  echo "You can invoke it with the following command:"
+  echo
+  echo "  compstyle endorphins"
+}
+
+function compstyle_endorphins_setup {
+  # You can define your own styles here using `setopt ...` and `zstyle ':completion:...' ...`.
+}
+
+compstyle_endorphins_setup "$@"

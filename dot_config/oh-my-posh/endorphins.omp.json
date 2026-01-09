@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": true,
+  "shell_integration": true,
+  "palette": {
+  },
+  "secondary_prompt": {
+    "template": "<b>></b> "
+  },
+  "transient_prompt": {
+    "template": "<lightBlue>{{ base .Segments.Path.Location }}</> {{ if .Root }}<lightRed>{{ end }}{{ if eq .Shell \"zsh\" }}%{{ else if eq .Shell \"bash\" }}${{ else }}>{{ end }}{{ if .Root }}</>{{ end }} "
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "lightCyan",
+          "template": "{{ if regexMatch \"^(1|true|yes)$\" (lower .Env.POSH_SHOW_SESSION_SEG) }}{{ if .SSHSession }}\ueba9{{ end }}<darkGray>[</>{{ if not .Root }}{{ .UserName }}@{{ end }}{{ .HostName }}<darkGray>]</> {{ end }}"
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "lightBlue",
+          "template": "{{ path .Path .Location }}{{ if not .Writable }} <lightRed>\uebe7</>{{ end }}",
+          "options": {
+            "style": "powerlevel",
+            "max_width": "70",
+            "folder_separator_icon": "<darkGray>/</>",
+            "mapped_locations": {
+              "~/Downloads": "\udb80\ude4d",
+              "~/Projects": "\udb83\udd09"
+            }
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": " <b>{{ if eq .Shell \"zsh\" }}%{{ else if eq .Shell \"bash\" }}${{ else }}>{{ end }}</b>",
+          "foreground_templates": [
+            "{{ if .Root }}lightRed{{ end }}"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hide",
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "template": "{{ .String }}",
+          "options": {
+            "always_enabled": false,
+            "status_separator": "|",
+            "status_template": "{{ if gt .Code 0 }}<lightRed>\uf12a{{ .Code }}{{ if (ne (reason .Code) (toString .Code)) }} - {{ lower (reason .Code) }}{{ end }}</>{{ else }}<lightGreen>\uf00c</>{{ end }}"
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "lightCyan",
+          "template": "  \udb81\udead {{ .FormattedMs }}",
+          "options": {
+            "threshold": 250
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "lightYellow",
+          "template": "  {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \udb80\udd93 {{ .StashCount }}{{ end }}",
+          "options": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "branch_icon": "\ue0a0 ",
+            "branch_template": "{{ truncE 16 (base .Branch) }}"
+          }
+        },
+        {
+          "type": "docker",
+          "style": "plain",
+          "foreground": "lightBlue",
+          "template": "  \uf308 {{ .Context }}"
+        },
+        {
+          "type": "php",
+          "style": "plain",
+          "foreground": "lightBlue",
+          "template": "  \ue73d {{ if .Error }}{{ lower .Error }}{{ else }}{{ url (nospace (cat .Major \".\" .Minor)) .URL }}{{ end }}"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "lightGreen",
+          "template": "  \ue73c {{ if .Error }}{{ lower .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ url (nospace (cat .Major \".\" .Minor)) .URL }}{{ end }}",
+          "options": {
+            "display_mode": "context"
+          }
+        },
+        {
+          "type": "ruby",
+          "style": "plain",
+          "foreground": "lightRed",
+          "template": "  \ue739 {{ if .Error }}{{ lower .Error }}{{ else }}{{ .Full }}{{ end }}"
+        },
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "default",
+          "template": "  {{.Icon}}"
+        }
+      ]
+    }
+  ]
+}

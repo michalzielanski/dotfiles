@@ -1,0 +1,27 @@
+#
+# .zsh_plugins.txt - antidote plugins file
+#
+
+#
+# Completions
+#
+
+# `ez-compinit` should be loaded before any other plugins or scripts that might
+# call `compdef`.
+# The result of `compinit` is cached for one day, see `.zstyles`. If there are
+# new hints in `fpath`, call `run-compinit --force` to reload the configuration.
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+#
+# Zsh Line Editor
+#
+
+#mattmc3/zephyr path:plugins/editor
+
+#
+# Even better Zsh
+#
+
+zdharma-continuum/fast-syntax-highlighting branch:v1.56
+zsh-users/zsh-autosuggestions

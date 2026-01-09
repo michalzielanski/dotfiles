@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+typeset -aU _brewcmd=(
+  $commands[brew]
+  /opt/homebrew/bin/brew(N)
+  /usr/local/bin/brew(N)
+  /home/linuxbrew/.linuxbrew/bin/brew(N)
+  $HOME/.homebrew/bin/brew(N)
+  $HOME/.linuxbrew/bin/brew(N)
+)
+(( ${#_brewcmd} )) || return 1
+
+print -r -- "$_brewcmd[1]"
+return 0

@@ -1,0 +1,42 @@
+#!/bin/zsh
+#
+# .zstyles - zstyle settings for features/plugins that need them.
+#
+
+zstyle ':zsh-conf:homebrew' 'enable-cmd-not-found' no
+
+zstyle ':zsh-conf:line-editor' 'key-bindings' emacs
+# Exclusions from alias expansion to their actual command like Fish abbreviations.
+zstyle ':zsh-conf:line-editor' 'glob-alias' no
+noexpand=(
+  ls
+  ll
+  grep
+)
+zstyle ':zsh-conf:line-editor:glob-alias' noexpand $noexpand
+unset noexpand
+
+#
+# Completions
+#
+
+# Caches the `zcompdump` file for a day by ez-compinit for performance reasons.
+# https://github.com/mattmc3/ez-compinit/tree/be538a2?tab=readme-ov-file#cachingcompiling-the-dump-file
+zstyle ':plugin:ez-compinit' 'use-cache' yes
+# Completion styles from `ez-compinit`. To see all available completion styles
+# run `compstyle -l`.
+# You can quickly test the appearance by changing the style of the current
+# session with the command `compstyle <stylename>`.
+zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
+# You can also create your own completion style from scratch.
+# See `functions/compstyle_endorphins_setup`.
+#zstyle ':plugin:ez-compinit' 'compstyle' 'endorphins'
+
+#
+# Zephyr plugins
+#
+
+# Enabling cache for all plugins that support cache.
+zstyle ':zephyr:plugin:*' 'use-cache' yes
+
+#zstyle ':zephyr:plugin:editor' key-bindings emacs
