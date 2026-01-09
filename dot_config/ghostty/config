@@ -34,6 +34,11 @@ image-storage-limit = 80000000
 # the `ghostty +list-actions` command.
 # https://ghostty.org/docs/config/reference#keybind
 # https://ghostty.org/docs/config/keybind
+# The list of current keybinds is available using the
+# `ghostty +list-keybinds` command.
+keybind = ctrl+arrow_left=esc:[1;5D # There's a bug in Ghostty, or the system is blocking something. The sequence isn't being sent to the shell (checked with cat -v). Changing it to, for example, alt+arrow_left does send it.
+keybind = ctrl+arrow_right=esc:[1;5C # As above.
+
 #keybind = super+home=scroll_to_top
 #keybind = super+end=scroll_to_bottom
 #keybind = TODO=scroll_to_selection
