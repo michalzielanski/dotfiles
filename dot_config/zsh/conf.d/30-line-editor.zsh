@@ -173,6 +173,7 @@ global_keybinds=(
   "$key_info[End]"     end-of-line           # Move to the end of the line.
   "$key_info[Delete]"  delete-char           # Delete the character under the cursor.
   "$key_info[BackTab]" reverse-menu-complete # Move to the previous completion.
+  "$key_info[Escape]$key_info[Escape]" prepend-sudo
 )
 
 # emacs and vi insert mode keybinds
