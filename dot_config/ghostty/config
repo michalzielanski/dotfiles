@@ -10,6 +10,13 @@
 # reloaded while running; some only apply to new windows and others may require
 # a full restart to take effect.
 
+# Automatic TERMINFO propagation. Needed because Ghostty terminal capabilities
+# were added in ncurses 6.5-20241228 and older systems still lack information
+# about terminal capabilities.
+# https://ghostty.org/docs/help/terminfo
+# https://ghostty.org/docs/config/reference#shell-integration-features
+shell-integration-features = sudo,ssh-terminfo,ssh-env
+
 # To see a list of available themes, run ghostty +list-themes.
 # https://github.com/catppuccin/ghostty
 #theme = Catppuccin Macchiato
