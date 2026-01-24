@@ -1,4 +1,4 @@
-command -v oh-my-posh &>/dev/null || return
+(( $+commands[oh-my-posh] )) || return
 
 # The standard Apple Terminal has issues displaying the ANSI characters correctly.
 [[ $TERM_PROGRAM != "Apple_Terminal" ]] || return
