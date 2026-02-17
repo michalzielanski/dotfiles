@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "version": 4,
+  "streaming": 100,
   "final_space": true,
   "shell_integration": true,
   "palette": {
