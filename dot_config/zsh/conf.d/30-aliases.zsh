@@ -2,6 +2,8 @@ alias ll='ls -lah'
 alias ldot='ls -ld .*'
 alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.svn,.vscode,.idea}"
 
+alias e='${(z)VISUAL:-${(z)EDITOR}}'
+
 alias tarls='tar -tvf'
 
 alias dl='curl --continue-at - --location --progress-bar --remote-name --remote-time'
