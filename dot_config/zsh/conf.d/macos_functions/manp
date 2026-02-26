@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Read man page with Preview.app
+# https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
+if ! (( $# )); then
+  echo >&2 'manp: You must specify the manual page you want'
+  return 1
+fi
+
+/usr/bin/man -w "$@" &>/dev/null && mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview || /usr/bin/man "$@"
+

@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Print the frontmost Finder directory.
+#function finder-print-dir {
+osascript 2> /dev/null <<EOF
+  tell application "Finder"
+    return POSIX path of (target of first window as text)
+  end tell
+EOF
+#}
+

@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Have Siri let me know when a process is complete.
+# Example:
+#   sleep 2 && lmk
+if (( $# )); then
+  say "$@"
+else
+  say --voice='Flo' 'Process complete.'
+fi
+

@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Change to the current Finder directory.
+cd "$(finder-print-dir)"
+

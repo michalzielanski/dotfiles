@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Push the current Finder directory to the dirstack.
+pushd "$(finder-print-dir)"
+
