@@ -16,6 +16,8 @@ noexpand=(
 zstyle ':zsh-conf:line-editor:glob-alias' noexpand $noexpand
 unset noexpand
 
+#zstyle ':zsh-conf:proto' 'workflow' shellactivation
+
 #
 # Completions
 #
