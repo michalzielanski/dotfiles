@@ -3,6 +3,10 @@
 # .zstyles - zstyle settings for features/plugins that need them.
 #
 
+keg_only_brews=(curl sqlite php@8.2 openjdk)
+zstyle ':zsh-conf:homebrew' 'keg-only-brews' $keg_only_brews
+unset keg_only_brews
+
 zstyle ':zsh-conf:homebrew' 'enable-cmd-not-found' no
 
 zstyle ':zsh-conf:line-editor' 'key-bindings' emacs
@@ -15,6 +19,8 @@ noexpand=(
 )
 zstyle ':zsh-conf:line-editor:glob-alias' noexpand $noexpand
 unset noexpand
+
+zstyle ':zsh-conf:ruby' 'brew-ver' 3.4
 
 #zstyle ':zsh-conf:proto' 'workflow' shellactivation
 

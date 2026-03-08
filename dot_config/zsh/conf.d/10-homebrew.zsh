@@ -8,13 +8,23 @@ _brewcmd="$(get-brew-cmd)" || { unset _brewcmd; return }
 eval "$(${_brewcmd} shellenv)"
 unset _brewcmd
 
-# Add keg-only completions to fpath.
-# Source: https://github.com/mattmc3/zephyr/blob/ec2452e/plugins/homebrew/homebrew.plugin.zsh#L49
-_kegonly=(curl ruby sqlite)
+# Keg only brew apps.
+zstyle -a ':zsh-conf:homebrew' keg-only-brews '_kegonly' \
+  || _kegonly=(curl sqlite)
+
+_keg_path=()
+_keg_fpath=()
+_keg_manpath=()
 for _keg in $_kegonly; do
-  fpath=($HOMEBREW_PREFIX/opt/${_keg}/share/zsh/site-functions(/N) $fpath)
+  _keg_path+=($HOMEBREW_PREFIX/opt/${_keg}/bin(/N))
+  _keg_fpath+=($HOMEBREW_PREFIX/opt/${_keg}/share/zsh/site-functions(/N))
+  _keg_manpath+=($HOMEBREW_PREFIX/opt/${_keg}/share/man(/N))
 done
-unset _keg{,only}
+
+[[ ! -z $_keg_path ]] && path=($_keg_path $path)
+[[ ! -z $_keg_fpath ]] && fpath=($_keg_fpath $fpath)
+[[ ! -z $_keg_manpath ]] && manpath=($_keg_manpath $manpath)
+unset _keg{,only,_path,_fpath,_manpath}
 
 # Handle brew on multi-user Apple silicon.
 # Source: https://github.com/mattmc3/zephyr/blob/ec2452e/plugins/homebrew/homebrew.plugin.zsh#L70
