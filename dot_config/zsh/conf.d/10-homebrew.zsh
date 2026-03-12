@@ -1,5 +1,5 @@
 # Homebrew configuration via environment variables is located in
-# the `~/.homebrew/brew.env` file.
+# the `$XDG_CONFIG_HOME/homebrew/brew.env` file.
 
 _brewcmd="$(get-brew-cmd)" || { unset _brewcmd; return }
 
