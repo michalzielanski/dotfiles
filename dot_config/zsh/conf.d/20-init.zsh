@@ -11,9 +11,9 @@ elif (( $+commands[nano] )); then
 fi
 
 if (( $+commands[cot] )); then
-  export VISUAL=cot
+  export VISUAL="cot --wait"
 elif (( $+commands[zed] )); then
-  export VISUAL=zed
+  export VISUAL="zed --wait"
 fi
 
 export PAGER=less
